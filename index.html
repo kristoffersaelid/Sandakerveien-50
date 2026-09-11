@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
+<script>
+  // If this page is served from a GitHub Pages *project* site (username.github.io/repo-name)
+  // and opened without a trailing slash, relative file paths (like the .ifc file) resolve
+  // one level too high and 404. This silently fixes the address before anything else loads.
+  (function () {
+    var path = location.pathname;
+    var looksLikeFile = /\.[a-zA-Z0-9]+$/.test(path.split('/').pop());
+    if (!path.endsWith('/') && !looksLikeFile) {
+      location.replace(path + '/' + location.search + location.hash);
+    }
+  })();
+</script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>3D BIM-visning · Sandakerveien 50</title>
